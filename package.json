@@ -1,0 +1,27 @@
+{
+  "name": "manablox",
+  "version": "1.0.0",
+  "description": "node CMS",
+  "main": "index.js",
+  "author": "Das PeTe <daspetemail@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "backpack dev",
+    "serve": "node server/main.js"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.4",
+    "backpack-core": "^0.8.1",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.1.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "helmet": "^3.14.0",
+    "node-sass": "^4.9.4",
+    "nuxt": "^2.2.0",
+    "sass-loader": "^7.1.0",
+    "socket.io": "^2.1.1"
+  }
+}
