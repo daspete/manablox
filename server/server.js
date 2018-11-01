@@ -1,44 +1,73 @@
+// load environment variables
 require('dotenv').config()
+
+// check if we are in dev mode or in production mode
 const isProduction = process.env.NODE_ENV === 'production'
 
+// import server modules
 import Sockets from '../sockets/sockets'
-
+const morgan = require('morgan')
+const mongoose = require('mongoose')
 const express = require('express')
+const expressSession = require('express-session')
+const passport = require('passport')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
-
 const cors = require('cors')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
-
+const cookieParser = require('cookie-parser')
 const api = require('../api/api.js')
 
-const { Nuxt, Builder } = require('nuxt')
-let nuxtConfig = require('../nuxt.config.js')
-    nuxtConfig.dev = !isProduction
-
-
+// define ip and port for the server
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
+// setup mongodb
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017', {
+    useNewUrlParser: true,
+    user: process.env.DATABASE_USER || 'admin',
+    pass: process.env.DATABASE_PASS ||''
+})
+mongoose.connection.on('error', (error) => { console.log(error) })
+mongoose.Promise = global.Promise
 
+// use security shield
 app.use(helmet())
 
+// use an http logger
+app.use(morgan('dev'))
 
+// setup cors
 app.use(cors({
     origin: '*',
     optionsSuccessStatus: 200
 }))
 
+// setup session handling
+app.use(expressSession({
+    name: process.env.SESSION_NAME || 'manablox-cookie',
+    secret: process.env.SESSION_SECRET || 'nothing-special',
+    resave: process.env.SESSION_RESAVE || true,
+    saveUninitialized: process.env.SESSION_SAVEUNINITIALIZED || true,
+}))
 
+// passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
+// api middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cookieParser());
 app.use('/api', api)
+require('./auth/auth')
 
-
-
+// nuxt.js middleware
+const { Nuxt, Builder } = require('nuxt')
+let nuxtConfig = require('../nuxt.config.js')
+    nuxtConfig.dev = !isProduction
 const nuxt = new Nuxt(nuxtConfig)
 if(nuxtConfig.dev){
     const builder = new Builder(nuxt)
@@ -46,12 +75,9 @@ if(nuxtConfig.dev){
 }
 app.use(nuxt.render)
 
-
-
-
-
+// start server
 server.listen(port, host)
 console.log(`express server is running at ${ host }:${ port } `)
 
-
+// start socket server
 const sockets = new Sockets(io)
