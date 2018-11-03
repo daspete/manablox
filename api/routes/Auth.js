@@ -6,7 +6,6 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 router.post('/signup', passport.authenticate('signup', { session: false }), async (req, res, next) => {
-    console.log(req);
     res.json({
         message: 'Signup successful',
         user: req.user
@@ -16,7 +15,10 @@ router.post('/signup', passport.authenticate('signup', { session: false }), asyn
 router.post('/login', async (req, res, next) => {
     passport.authenticate('login', async (err, user, info) => {
         try{
-            if(err || !user){
+            if(!user){
+                return res.status(401).json({ message: 'not authorized' });
+            }
+            if(err){
                 const error = new Error('An Error occured')
                 return next(error);
             }

@@ -45,17 +45,17 @@ app.use(cors({
     optionsSuccessStatus: 200
 }))
 
+// passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
 // setup session handling
 app.use(expressSession({
-    name: process.env.SESSION_NAME || 'manablox-cookie',
+    name: process.env.SESSION_NAME || 'manablox-session',
     secret: process.env.SESSION_SECRET || 'nothing-special',
     resave: process.env.SESSION_RESAVE || true,
     saveUninitialized: process.env.SESSION_SAVEUNINITIALIZED || true,
 }))
-
-// passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
 
 // api middleware
 app.use(bodyParser.urlencoded({ extended: false }))

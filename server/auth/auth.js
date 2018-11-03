@@ -7,6 +7,8 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 const UserModel = require('../../database/models/User')
 
+
+// user signup
 passport.use('signup', new localStrategy({
     usernameField: 'email',
     passwordField: 'password'
@@ -19,6 +21,8 @@ passport.use('signup', new localStrategy({
     }
 }))
 
+
+// user login
 passport.use('login', new localStrategy({
     usernameField: 'email',
     passwordField: 'password'
@@ -34,6 +38,8 @@ passport.use('login', new localStrategy({
     }catch(err){ return done(err) }
 }))
 
+
+// JWT token check
 passport.use(new JWTstrategy({
     secretOrKey: process.env.JWT_SECRET || 'top_secret',
     jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secret_token')
