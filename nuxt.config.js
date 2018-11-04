@@ -13,12 +13,18 @@ module.exports = {
         ],
     },
 
+    css: [
+        '~/assets/scss/app.scss'
+    ],
+
     modules: [
         '@nuxtjs/axios'
     ],
 
     plugins: [
-        '~/plugins/events'
+        '~/plugins/events',
+        '~/plugins/DesignSystem',
+        '~/plugins/PageComponents'
     ],
 
     build: {
