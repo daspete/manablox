@@ -4,4 +4,4 @@
 /server/main.map
 /server/main.js
 /.nuxt
-/static/styleguide
+/client/static/styleguide
