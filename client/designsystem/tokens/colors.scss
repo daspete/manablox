@@ -1,5 +1,6 @@
-$red: #f90;
+$color-red: #f90;
 
+// export for JS
 :export {
-    red_color: $red
+    color-red: $color-red
 }
