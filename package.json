@@ -30,6 +30,7 @@
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.8",
+    "mongoose-materialized": "^0.2.0",
     "morgan": "^1.9.1",
     "node-sass": "^4.9.4",
     "nuxt": "^2.2.0",

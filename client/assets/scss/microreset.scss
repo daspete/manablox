@@ -1,0 +1,38 @@
+html {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    text-rendering: inherit;
+}
+
+html, body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+.vertical-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+button, textarea, select, input {
+    outline: none !important;
+}
+
+button {
+    cursor: pointer;
+}

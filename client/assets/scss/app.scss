@@ -1,5 +1,9 @@
-@import "~/designsystem/tokens/colors.scss";
+@import "microreset";
 
-body {
-    color: $color-red
-}
+
+@import "bootstrap/bootstrap";
+@import "bootstrap/variables";
+
+@import "fonts";
+
+@import "~/designsystem/tokens/tokens.scss";

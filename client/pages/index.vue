@@ -1,3 +1,5 @@
 <template>
-    <div class="app">AP2P</div>
+    <div class="app">
+        <nuxt-link to="/admin">Admin</nuxt-link>
+    </div>
 </template>

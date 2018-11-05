@@ -1,6 +1,41 @@
-$color-red: #f90;
+$color_lighterblue:  #F3F8FF;
+$color_lightblue:  #D7E6FF;
+$color_darkblue:  #3365B4;
+$color_blue: #3B86FF;
 
-// export for JS
+$color_lightestgray: #E9EDF3;
+$color_lightergray: #DFE2E6;
+$color_lightgray: #C0C5CE;
+$color_gray: #A4A5B7;
+$color_darkgray: #231F20;
+
+
+$color_darkred: #DA1F3E;
+$color_orange: #FFC06A;
+$color_teal: #5ED5F8;
+$color_green:  #5EE2A0;
+$color_red: #FF6565;
+$color_purple: #ADADF0;
+
+$color_white: #FFFFFF;
+$color_black: #000000;
+
 :export {
-    color-red: $color-red
+    color_lighterblue : $color_lighterblue;
+    color_lightblue : $color_lightblue;
+    color_darkblue : $color_darkblue;
+    color_blue : $color_blue;
+    color_lightestgray : $color_lightestgray;
+    color_lightergray : $color_lightergray;
+    color_lightgray : $color_lightgray;
+    color_gray : $color_gray;
+    color_darkgray : $color_darkgray;
+    color_darkred : $color_darkred;
+    color_orange : $color_orange;
+    color_teal : $color_teal;
+    color_green : $color_green;
+    color_red : $color_red;
+    color_purple : $color_purple;
+    color_white : $color_white;
+    color_black : $color_black;
 }
