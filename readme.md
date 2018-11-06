@@ -9,6 +9,10 @@ Manablox is a boilerplate for rapid prototyping, based on
 - mongoose
 - vue-styleguidist
 
+## dev state
+
+this package is currently under development, so the structure is changing constantly...
+
 ## installation
 
 To install this system, just clone this repo and install it with npm or yarn, i would recommend yarn, cause of more speed...

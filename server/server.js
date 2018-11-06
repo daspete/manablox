@@ -18,7 +18,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const api = require('../api/api.js')
+
 
 // define ip and port for the server
 const host = process.env.HOST || '0.0.0.0'
@@ -61,12 +61,13 @@ app.use(expressSession({
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser());
-app.use('/api', api)
-require('./auth/auth')
+
+require('@server/auth')
+app.use('/api', require('@server/api'))
 
 // nuxt.js middleware
 const { Nuxt, Builder } = require('nuxt')
-let nuxtConfig = require('../nuxt.config.js')
+let nuxtConfig = require('@app/nuxt.config.js')
     nuxtConfig.dev = !isProduction
 const nuxt = new Nuxt(nuxtConfig)
 if(nuxtConfig.dev){
