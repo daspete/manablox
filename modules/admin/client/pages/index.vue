@@ -3,7 +3,7 @@
         <div class="admin__header">
             <div class="row">
                 <div class="col-9">
-                    <span class="admin__name ml-2">immofinanz</span>
+                    <span class="admin__name ml-2">manablox</span>
                     <span class="admin__breadcrumb ml-3">admin</span>
                 </div>
                 <div class="col-3 text-right">
@@ -22,7 +22,6 @@
 
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined
-const faker = process.client ? require('faker') : undefined
 
 export default {
 
