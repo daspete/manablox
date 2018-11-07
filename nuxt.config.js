@@ -1,7 +1,7 @@
+require('dotenv').config();
+
 const path = require('path')
 const fs = require('fs')
-
-require('dotenv').config();
 
 const plugins = [
     '~/plugins/events',
@@ -47,9 +47,7 @@ module.exports = {
             modules.forEach((moduleName) => {
                 try {
                     config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ moduleName }/client`)
-                }catch(e){
-                    console.log(e)
-                }
+                }catch(e){}
             })
 
 

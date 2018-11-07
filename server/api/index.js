@@ -11,8 +11,6 @@ moduleFolders.forEach((_module) => {
     let moduleFolderName = _module;
     let moduleName = _module.toLowerCase()
 
-    console.log(moduleName)
-
     try {
         router.use(`/${ moduleName }`, require('@modules/' + moduleFolderName + '/api/routes.js'))
     }catch(e){}
