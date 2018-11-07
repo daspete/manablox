@@ -8,7 +8,7 @@ const context = require.context('~/../modules', true, /adminroutes\.js$/)
 context.keys().forEach((key) => {
     let moduleName = key.substr(2, key.length - 1).split('/')[0]
 
-    if(modules.contains(moduleName)){
+    if(modules.indexOf(moduleName) !== -1){
         adminRoutes.push(context(key).default)
     }
 })
