@@ -1,18 +1,14 @@
-import fs from 'fs'
-import path from 'path'
 
-let currentPath = path.resolve(process.cwd());
-let controllerPath = currentPath + '/sockets/controllers/'
-let controllerFiles = fs.readdirSync(controllerPath)
-let controllers = []
-controllerFiles.forEach((file) => {
-    if(file.endsWith('.js')){
-        let controller = require('./controllers/' + file).default
-        controllers.push(controller)
-    }
+const modules = process.env.ENABLED_MODULES.split(',')
+const socketControllers = []
+
+
+modules.forEach((moduleName) => {
+    try {
+        let socketController = require('@modules/' + moduleName + '/sockets/controller.js').default
+        socketControllers.push(socketController)
+    }catch(e){}
 })
-
-
 
 class Sockets {
 
@@ -22,7 +18,7 @@ class Sockets {
 
         this.io.on('connection', (socket) => { this.OnConnection(socket) })
 
-        controllers.forEach((Controller) => {
+        socketControllers.forEach((Controller) => {
             this.controllers.push(new Controller(this.io))
         })
     }

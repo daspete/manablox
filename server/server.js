@@ -5,7 +5,7 @@ require('dotenv').config()
 const isProduction = process.env.NODE_ENV === 'production'
 
 // import server modules
-import Sockets from '../sockets/sockets'
+const Sockets = require('@server/sockets').default
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const express = require('express')

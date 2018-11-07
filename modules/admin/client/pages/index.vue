@@ -12,21 +12,7 @@
             </div>
         </div>
 
-        <div class="admin__sidebar">
-            <Button small v-on:click.native="AddRandomDataObjects">Add random dataobjects</Button>
-
-            <TreeItem
-                v-if="dataobjects"
-                v-for="item in dataobjects"
-                :key="`tree-item-${ item._id }`"
-                :item="item"
-            />
-        </div>
-
-        <div class="admin__content">
-            <nuxt-child />
-        </div>
-
+        <nuxt-child />
     </div>
 </template>
 
@@ -42,59 +28,13 @@ export default {
 
     middleware: 'loggedin',
 
-    async asyncData({ app, store }){
-        // let dataobjects = await app.$axios.$get('dataobjects');
-
-        return {
-            dataobjects: []
-        }
-    },
-
-    mounted(){
-
-    },
-
     methods: {
         Logout(){
             Cookie.remove('auth')
             this.$store.commit('setAuth', null)
             this.$router.push('/login')
-        },
-
-        async AddRandomDataObjects(){
-            let dataobjectCount = 5;
-            let dataobjectIndex = 0;
-
-            for(dataobjectIndex = 0; dataobjectIndex < dataobjectCount; dataobjectIndex++){
-                let dataobject = await this.$axios.$post('dataobjects', {
-                    title: faker.random.words(2),
-                    slug: faker.random.word()
-                })
-
-                let randomNumber = Math.round(Math.random() * 5 + 2);
-
-                for(let i = 0; i < randomNumber; i++){
-                    let subdataobject = await this.$axios.$post('dataobjects', {
-                        parentId: dataobject._id,
-                        title: faker.random.words(2),
-                        slug: faker.random.word()
-                    })
-
-                    let anotherRandomNumber = Math.round(Math.random() * 5 + 2);
-
-                    for(let j = 0; j < anotherRandomNumber; j++){
-                        let subsubdataobject = await this.$axios.$post('dataobjects', {
-                            parentId: subdataobject._id,
-                            title: faker.random.words(2),
-                            slug: faker.random.word()
-                        })
-                    }
-                }
-            }
-
-            let dataobjects = await this.$axios.$get('dataobjects');
-            this.dataobjects = dataobjects
         }
+
     }
 
 }
@@ -107,8 +47,6 @@ export default {
 
 <style lang="scss">
 @import "~admin/designsystem/tokens/colors.scss";
-
-$sidebar-width: 420px;
 
 .admin {
     width: 100%;
@@ -124,27 +62,6 @@ $sidebar-width: 420px;
         width: 100%;
         height: 42px;
         overflow: hidden;
-    }
-
-    &__sidebar {
-        position: absolute;
-        top: 42px;
-        bottom: 0;
-        left: 0;
-        width: $sidebar-width;
-        background-color: white;
-        overflow: auto;
-        border-right: 1px solid $color-lightergray;
-    }
-
-    &__content {
-        position: absolute;
-        top: 42px;
-        left: $sidebar-width;
-        bottom: 0;
-        right: 0;
-        background-color: $color-lightestgray;
-        padding: 1rem 1.66rem;
     }
 
     &__name {

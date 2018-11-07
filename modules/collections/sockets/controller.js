@@ -8,11 +8,11 @@ export default class {
     }
 
     OnConnect(socket){
-        console.log('new client connected to Users socket')
+        console.log('new client connected to the collections socket')
     }
 
     OnDisconnect(socket){
-        console.log('client disconnected from Users socket')
+        console.log('client disconnected from the collections socket')
     }
 
 }
