@@ -3,8 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-let modules = process.env.ENABLED_MODULES.split(',')
-
+const modules = process.env.ENABLED_MODULES.split(',')
 const routes = []
 
 modules.forEach((moduleName) => {

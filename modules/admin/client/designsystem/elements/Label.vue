@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import designtokens from "~/designsystem/tokens/colors.scss";
+import designtokens from "~admin/designsystem/tokens/colors.scss";
 
 export default {
     name: 'Label',

@@ -6,7 +6,7 @@ module.exports = {
 
     title: 'Bankai DesignSystem',
 
-    components: 'client/designsystem/**/[A-Z]*.vue',
+    components: 'modules/*/client/designsystem/**/[A-Z]*.vue',
 
     version: '1.0.0',
 

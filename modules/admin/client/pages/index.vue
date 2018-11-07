@@ -3,7 +3,7 @@
         <div class="admin__header">
             <div class="row">
                 <div class="col-9">
-                    <span class="admin__name ml-2">manablox</span>
+                    <span class="admin__name ml-2">immofinanz</span>
                     <span class="admin__breadcrumb ml-3">admin</span>
                 </div>
                 <div class="col-3 text-right">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="admin__content">
-            CONTENT
+            <nuxt-child />
         </div>
 
     </div>
@@ -106,7 +106,7 @@ export default {
 
 
 <style lang="scss">
-@import "~/designsystem/tokens/colors.scss";
+@import "~admin/designsystem/tokens/colors.scss";
 
 $sidebar-width: 420px;
 

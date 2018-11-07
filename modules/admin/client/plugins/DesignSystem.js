@@ -1,9 +1,9 @@
 import Vue from 'vue'
 
 const contexts = [
-    require.context('~/designsystem/elements/', true, /\.vue$/),
-    require.context('~/designsystem/patterns/', true, /\.vue$/),
-    require.context('~/designsystem/templates/', true, /\.vue$/),
+    require.context('~admin/designsystem/elements/', true, /\.vue$/),
+    require.context('~admin/designsystem/patterns/', true, /\.vue$/),
+    require.context('~admin/designsystem/templates/', true, /\.vue$/),
 ]
 
 contexts.forEach((context) => {
@@ -12,5 +12,3 @@ contexts.forEach((context) => {
         Vue.component(component.name, component)
     })
 })
-
-

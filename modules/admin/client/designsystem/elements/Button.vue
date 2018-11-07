@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import designtokens from "~/designsystem/tokens/tokens.scss";
+import designtokens from "~admin/designsystem/tokens/tokens.scss";
 
 /**
  * Button element for links and action buttons
@@ -161,7 +161,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/designsystem/tokens/tokens.scss";
+@import "~admin/designsystem/tokens/tokens.scss";
 
 .button {
     display: inline-block;

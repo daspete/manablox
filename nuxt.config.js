@@ -3,6 +3,20 @@ const fs = require('fs')
 
 require('dotenv').config();
 
+const plugins = [
+    '~/plugins/events',
+]
+
+const modules = process.env.ENABLED_MODULES.split(',')
+
+modules.forEach((moduleName) => {
+    try{
+        if(fs.existsSync(`./modules/${ moduleName }/client/plugins/DesignSystem.js`)){
+            plugins.push(`~/../modules/${ moduleName }/client/plugins/DesignSystem`)
+        }
+    }catch(e){}
+})
+
 module.exports = {
 
     env: process.env,
@@ -24,26 +38,15 @@ module.exports = {
         '@nuxtjs/axios'
     ],
 
-    plugins: [
-        '~/plugins/events',
-        '~/plugins/DesignSystem',
-        '~/plugins/PageComponents'
-    ],
+    plugins: plugins,
 
     build: {
         extractCSS: true,
 
         extend(config){
-
-            const modulePath = path.resolve(process.cwd(), 'modules')
-            const moduleFolders = fs.readdirSync(modulePath)
-
-            moduleFolders.forEach((_module) => {
-                let moduleFolderName = _module;
-                let moduleName = _module.toLowerCase()
-
+            modules.forEach((moduleName) => {
                 try {
-                    config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ moduleFolderName }/client`)
+                    config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ moduleName }/client`)
                 }catch(e){
                     console.log(e)
                 }

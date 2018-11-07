@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/designsystem/tokens/tokens.scss";
+@import "~admin/designsystem/tokens/tokens.scss";
 
 .tree {
     &__item {

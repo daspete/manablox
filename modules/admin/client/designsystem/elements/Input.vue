@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import designtokens from "~/designsystem/tokens/tokens.scss";
+import designtokens from "~admin/designsystem/tokens/tokens.scss";
 
 export default {
     name: 'Input',
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/designsystem/tokens/tokens.scss";
+@import "~admin/designsystem/tokens/tokens.scss";
 
 .input {
     display: inline-block;

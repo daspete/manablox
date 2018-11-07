@@ -56,8 +56,6 @@ export default {
                 this.error = err.response.data;
             }
 
-
-
         }
     }
 
@@ -65,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~/designsystem/tokens/colors.scss";
+@import "~admin/designsystem/tokens/colors.scss";
 
 .login {
     width: 100%;
