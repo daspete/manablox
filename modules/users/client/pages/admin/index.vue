@@ -2,6 +2,6 @@
     <div class="users">
         USERSADMIN<br>
 
-        <nut-child />
+        <nuxt-child />
     </div>
 </template>
