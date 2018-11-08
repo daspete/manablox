@@ -26,17 +26,16 @@ install this system with the command: ``` yarn ```
 
 ## available yarn tasks
 
-**client:dev** - Starts a development instance of the client part (nuxt)
-**client:build** - Builds a production instance of the client part
-**client:serve** - Creates a server instance of the client part
+- **client:dev** - Starts a development instance of the client part (nuxt)
+- **client:build** - Builds a production instance of the client part
+- **client:serve** - Creates a server instance of the client part
 
-**server:dev** - Starts a development instance of the whole system
-**server:build** - Builds a production instance of the whole system
-**server:serve** - Creates a server instance of the whole system
+- **server:dev** - Starts a development instance of the whole system
+- **server:build** - Builds a production instance of the whole system
+- **server:serve** - Creates a server instance of the whole system
 
-**styleguide:dev** - Creates a development instance of the styleguide
-
-**styleguide:build** - Builds a production package of the styleguide, which is available at http[s]://yourhost/styleguide
+- **styleguide:dev** - Creates a development instance of the styleguide
+- **styleguide:build** - Builds a production package of the styleguide, which is available at http[s]://yourhost/styleguide
 
 
 ## Creating modules
