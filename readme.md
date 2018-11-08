@@ -14,6 +14,8 @@ Manablox is a boilerplate for rapid prototyping, based on
 
 this package is currently under development, so the structure is changing constantly...
 
+currently the vue-styleguidist part is disfunctional
+
 
 ## installation
 
