@@ -146,11 +146,12 @@ export default {
             let styles = {}
 
             if(this.color){
-                styles.color = this.tokens[`color-${ this.color }`];
+                styles.color = this.tokens[`color_${ this.color }`];
             }
 
             if(this.backgroundColor){
-                styles.backgroundColor = this.tokens[`color-${ this.backgroundColor }`];
+                styles.backgroundColor = this.tokens[`color_${ this.backgroundColor }`];
+                styles.borderColor = styles.backgroundColor;
             }
 
             return styles;

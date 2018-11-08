@@ -44,6 +44,19 @@ module.exports = {
         extractCSS: true,
 
         extend(config){
+
+
+            const imageLoader = config.module.rules.find((loader) => {
+                return loader.test.toString() == /\.(png|jpe?g|gif|svg|webp)$/.toString()
+            })
+            imageLoader.test = /\.(png|jpe?g|gif|webp)$/
+
+            config.module.rules.push({
+                test: /\.svg$/,
+                loader: 'html-loader',
+            });
+
+
             modules.forEach((moduleName) => {
                 try {
                     config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ moduleName }/client`)

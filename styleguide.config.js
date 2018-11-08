@@ -14,7 +14,7 @@ modules.forEach((moduleName) => {
 module.exports = {
     styleguideDir: 'client/static/styleguide',
 
-    title: 'Bankai DesignSystem',
+    title: 'manablox DesignSystem',
 
     components: 'modules/*/client/designsystem/**/[A-Z]*.vue',
 

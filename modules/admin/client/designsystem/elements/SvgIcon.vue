@@ -80,8 +80,6 @@ export default {
     data() {
         let color = designtokens[`color_${ this.color }`];
 
-        console.log(req('./' + this.name + '.svg'))
-
         return {
             svg: req("./" + this.name + ".svg")
                 .replace(

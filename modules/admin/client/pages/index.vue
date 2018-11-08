@@ -16,10 +16,12 @@
                 v-for="moduleName in modules"
                 :key="`modulebutton--${ moduleName }`"
                 :to="`${ moduleName }`"
+                color="white"
+                backgroundColor="darkred"
                 style="display: block;"
                 mini
             >
-                {{ moduleName }}
+                <SvgIcon name="contentbuilder" color="white" /> {{ moduleName }}
             </Button>
         </div>
         <div class="admin__container">
@@ -99,7 +101,7 @@ export default {
         position: fixed;
         left: 0;
         top: 42px;
-        background-color: white;
+        background-color: $color_darkgray;
         width: 140px;
         bottom: 0;
     }
