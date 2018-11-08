@@ -23,8 +23,14 @@ const faker = process.client ? require('faker') : undefined
 export default {
 
     async asyncData({ app, store }){
+        let collections = []
+
+        try{
+            collections = await app.$axios.$get('collections')
+        }catch(e){}
+
         return {
-            collections: await app.$axios.$get('collections')
+            collections
         }
     },
 
@@ -72,26 +78,34 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "~admin/designsystem/tokens/colors.scss";
 
 $sidebar-width: 420px;
 
+.collections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
 .admin {
     &__sidebar {
         position: absolute;
-        top: 42px;
+        top: 0;
         bottom: 0;
         left: 0;
         width: $sidebar-width;
         background-color: white;
-        overflow: auto;
         border-right: 1px solid $color-lightergray;
     }
 
     &__content {
         position: absolute;
-        top: 42px;
+        top: 0;
         left: $sidebar-width;
         bottom: 0;
         right: 0;

@@ -46,8 +46,6 @@ export default {
     },
 
     data(){
-        console.log(designtokens);
-
         return {
             tokens: designtokens
         }

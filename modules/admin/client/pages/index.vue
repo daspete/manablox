@@ -11,8 +11,10 @@
                 </div>
             </div>
         </div>
+        <div class="admin__container">
+            <nuxt-child />
+        </div>
 
-        <nuxt-child />
     </div>
 </template>
 
@@ -61,6 +63,14 @@ export default {
         width: 100%;
         height: 42px;
         overflow: hidden;
+    }
+
+    &__container {
+        position: absolute;
+        top: 42px;
+        left: 0;
+        width: 100%;
+        bottom: 0;
     }
 
     &__name {

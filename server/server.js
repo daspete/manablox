@@ -31,7 +31,7 @@ mongoose.connect(process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017', {
     pass: process.env.DATABASE_PASS ||''
 })
 mongoose.connection.on('error', (error) => { console.log(error) })
-mongoose.Promise = global.Promise
+// mongoose.Promise = global.Promise
 
 // use security shield
 app.use(helmet())

@@ -9,9 +9,11 @@ Manablox is a boilerplate for rapid prototyping, based on
 - mongoose
 - vue-styleguidist
 
+
 ## dev state
 
 this package is currently under development, so the structure is changing constantly...
+
 
 ## installation
 
@@ -21,87 +23,44 @@ install yarn with:  ``` npm install -g yarn ```
 
 install this system with the command: ``` yarn ```
 
+
 ## available yarn tasks
 
-- ``` yarn run dev ``` starts a hot reload development server
-- ``` yarn run serve ``` starts a production server
-- ``` yarn run styleguide ``` starts a hot reload styleguide development server
-- ``` yarn run styleguide:build ``` creates a production package of the styleguide and saves it in the ``` client/static/styleguide ``` folder
+**client:dev** - Starts a development instance of the client part (nuxt)
+**client:build** - Builds a production instance of the client part
+**client:serve** - Creates a server instance of the client part
+
+**server:dev** - Starts a development instance of the whole system
+**server:build** - Builds a production instance of the whole system
+**server:serve** - Creates a server instance of the whole system
+
+**styleguide:dev** - Creates a development instance of the styleguide
+**styleguide:build** - Builds a production package of the styleguide, which is available at http[s]://yourhost/styleguide
 
 
+## Creating modules
 
-## add api routes
+Each module is located in a subfolder of ``` /modules ```
 
-To add another api route, just create a new file in the folder ``` api/routes ```, the name of this file is also the name of the route group
 
-** Example route: **
+### Module structure
 
-``` js
-const express = require('express')
-const router = express.Router()
+you find a demo module in the folder ``` /modules/demomodule ```
 
-router.get('/', (req, res, next) => {
-    res.json('Welcome to a new route')
-})
+Each module has an endpoint for the
 
-module.exports = router
+- **api** (express api router)
+- **client** (nuxt pages and routes)
+- **client admin** (nuxt pages and routes for the admin module)
+- **designsystem** (elements, patterns, templates and tokens for the vue-styleguidist package)
+- **sockets** (socket.io controller)
+- **mongodb** (DatabaseModels for mongodb)
+
+## Enable and disable modules
+
+To enable modules, you need an entry in the .env file
+
 ```
-
-
-
-## add database models
-
-To add another model, you can use a basic mongoose schema and model. Create a new file in the folder ``` database/models ```
-
-** Example model: ** 
-
-``` js
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-
-const MyModelSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    }
-})
-
-module.exports = mongoose.model('mymodel', MyModelSchema)
+ENABLED_MODULES=users,auth,admin,demomodule
 ```
-
-
-
-## add new socket
-
-To add a new socket, create a new file in the folder ``` sockets/controllers ```
-
-** Example socket: **
-
-``` js
-let connections = []
-
-export default class {
-
-    constructor(io){
-        this.io = io;
-    }
-
-    OnConnect(socket){
-        console.log('new client connected to my socket')
-    }
-
-    OnDisconnect(socket){
-        console.log('client disconnected from my socket')
-    }
-
-}
-```
-
-
-## the design system
-
-All vue components located in the folder and subfolders of ``` client/designsystem ``` are globally available in your app
-
-You can create style tokens in the folder ``` client/designsystem/tokens ```
-
 
