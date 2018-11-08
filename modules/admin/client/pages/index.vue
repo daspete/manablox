@@ -11,6 +11,17 @@
                 </div>
             </div>
         </div>
+        <div class="admin__modules">
+            <Button
+                v-for="moduleName in modules"
+                :key="`modulebutton--${ moduleName }`"
+                :to="`${ moduleName }`"
+                style="display: block;"
+                mini
+            >
+                {{ moduleName }}
+            </Button>
+        </div>
         <div class="admin__container">
             <nuxt-child />
         </div>
@@ -28,6 +39,17 @@ const Cookie = process.client ? require('js-cookie') : undefined
 export default {
 
     middleware: 'loggedin',
+
+    asyncData(){
+        let modules = process.env.ENABLED_MODULES.split(',')
+        modules = modules.filter((moduleName) => {
+            return moduleName != 'admin' && moduleName != 'auth'
+        })
+
+        return {
+            modules
+        }
+    },
 
     methods: {
         Logout(){
@@ -68,8 +90,17 @@ export default {
     &__container {
         position: absolute;
         top: 42px;
-        left: 0;
+        left: 142px;
         width: 100%;
+        bottom: 0;
+    }
+
+    &__modules {
+        position: fixed;
+        left: 0;
+        top: 42px;
+        background-color: white;
+        width: 140px;
         bottom: 0;
     }
 

@@ -9,11 +9,9 @@
     "client:dev": "nuxt",
     "client:build": "nuxt build",
     "client:serve": "nuxt serve",
-
     "server:dev": "backpack dev",
     "server:build": "nuxt build; backpack build",
     "server:serve": "node server/main.js",
-
     "styleguide:dev": "vue-styleguidist server",
     "styleguide:build": "vue-styleguidist build"
   },
@@ -32,6 +30,7 @@
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
     "helmet": "^3.14.0",
+    "html-loader": "^0.5.5",
     "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.8",

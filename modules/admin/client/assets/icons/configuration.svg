@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0.8;
+      }
+    </style>
+  </defs>
+  <path id="ic_tune_24px" class="cls-1" d="M3,15.444v1.778H8.333V15.444ZM3,4.778V6.556h8.889V4.778ZM11.889,19V17.222H19V15.444H11.889V13.667H10.111V19ZM6.556,8.333v1.778H3v1.778H6.556v1.778H8.333V8.333ZM19,11.889V10.111H10.111v1.778ZM13.667,8.333h1.778V6.556H19V4.778H15.444V3H13.667Z" transform="translate(-3 -3)"/>
+</svg>

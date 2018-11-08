@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #a4a5b7;
+      }
+    </style>
+  </defs>
+  <g id="icon_chat-room" transform="translate(-255 -91)">
+    <path id="Vereinigungsmenge_11" data-name="Vereinigungsmenge 11" class="cls-1" d="M11-382H6l1.828-2H14a1,1,0,0,0,1-1v-6h1a1,1,0,0,1,1,1v7a1,1,0,0,1-1,1H14v3Zm-7-4H2a1,1,0,0,1-1-1v-7a1,1,0,0,1,1-1H12a1,1,0,0,1,1,1v7a1,1,0,0,1-1,1H7l-3,3Z" transform="translate(254 486)"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #da1f3e;
+      }
+    </style>
+  </defs>
+  <path id="Vereinigungsmenge_8" data-name="Vereinigungsmenge 8" class="cls-1" d="M-481-8a.945.945,0,0,1-1-1v-9a.945.945,0,0,1,1-1h2a.945.945,0,0,1,1,1v9a.945.945,0,0,1-1,1Zm-6,0a.944.944,0,0,1-1-1V-23a.945.945,0,0,1,1-1h2a.945.945,0,0,1,1,1V-9a.944.944,0,0,1-1,1Zm-6,0a.945.945,0,0,1-1-1v-4a.945.945,0,0,1,1-1h2a.946.946,0,0,1,1,1v4a.945.945,0,0,1-1,1Z" transform="translate(494 24)"/>
+</svg>

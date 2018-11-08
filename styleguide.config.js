@@ -27,6 +27,10 @@ module.exports = {
     serverHost: '0.0.0.0',
     serverPort: 3333,
 
+    require: [
+        path.join(__dirname, 'client/assets/scss/app.scss')
+    ],
+
     webpackConfig: {
         resolve: {
             alias: aliases
@@ -49,6 +53,10 @@ module.exports = {
                 {
 					test: /\.scss$/,
 					use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+                },
+                {
+                    test: /\.svg$/,
+                    loader: 'html-loader',
                 },
 			]
         },
