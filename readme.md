@@ -30,9 +30,13 @@ install this system with the command: ``` yarn ```
 - **client:build** - Builds a production instance of the client part
 - **client:serve** - Creates a server instance of the client part
 
-- **server:dev** - Starts a development instance of the whole system
-- **server:build** - Builds a production instance of the whole system
-- **server:serve** - Creates a server instance of the whole system
+- **server:dev** - Starts a development instance of the server part (express, socket.io, mongodb)
+- **server:build** - Builds a production instance of the server part
+- **server:serve** - Creates a server instance of the server part
+
+- **system:dev** - Starts a development instance of the whole system (nuxt, styleguide, express, socket.io, mongodb)
+- **system:build** - Builds a production instance of the whole system
+- **system:serve** - Creates a server instance of the whole system
 
 - **styleguide:dev** - Creates a development instance of the styleguide
 - **styleguide:build** - Builds a production package of the styleguide, which is available at http[s]://yourhost/styleguide

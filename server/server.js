@@ -1,6 +1,8 @@
 // load environment variables
 require('dotenv').config()
 
+const serverOnly = process.env.SERVER_ONLY == "true"
+
 // check if we are in dev mode or in production mode
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -66,15 +68,18 @@ require('@server/auth')
 app.use('/api', require('@server/api'))
 
 // nuxt.js middleware
-const { Nuxt, Builder } = require('nuxt')
-let nuxtConfig = require('@app/nuxt.config.js')
-    nuxtConfig.dev = !isProduction
-const nuxt = new Nuxt(nuxtConfig)
-if(nuxtConfig.dev){
-    const builder = new Builder(nuxt)
-    builder.build()
+if(!serverOnly){
+    const { Nuxt, Builder } = require('nuxt')
+    let nuxtConfig = require('@app/nuxt.config.js')
+        nuxtConfig.dev = !isProduction
+    const nuxt = new Nuxt(nuxtConfig)
+    if(nuxtConfig.dev){
+        const builder = new Builder(nuxt)
+        builder.build()
+    }
+    app.use(nuxt.render)
 }
-app.use(nuxt.render)
+
 
 // start server
 server.listen(port, host)

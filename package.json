@@ -9,9 +9,16 @@
     "client:dev": "nuxt",
     "client:build": "nuxt build",
     "client:serve": "nuxt serve",
-    "server:dev": "backpack dev",
-    "server:build": "nuxt build; backpack build",
-    "server:serve": "node server/main.js",
+
+    "server:dev": "SERVER_ONLY=true backpack dev",
+    "server:build": "SERVER_ONLY=true nuxt build; backpack build",
+    "server:serve": "SERVER_ONLY=true node server/main.js",
+
+    "system:dev": "backpack dev",
+    "system:build": "nuxt build; vue-styleguidist build; backpack build",
+    "system:serve": "node server/main.js",
+
+
     "styleguide:dev": "vue-styleguidist server",
     "styleguide:build": "vue-styleguidist build"
   },
