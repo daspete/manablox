@@ -1,5 +1,15 @@
+require('dotenv').config();
+
 const path = require('path');
 const vueLoader = require('vue-loader');
+
+const modules = process.env.ENABLED_MODULES.split(',');
+const aliases = {}
+
+modules.forEach((moduleName) => {
+    aliases[`~${ moduleName }`] = path.resolve(__dirname + '/modules/' + moduleName + '/client')
+})
+
 
 module.exports = {
     styleguideDir: 'client/static/styleguide',
@@ -18,6 +28,9 @@ module.exports = {
     serverPort: 3333,
 
     webpackConfig: {
+        resolve: {
+            alias: aliases
+        },
         module: {
             rules: [
 				{

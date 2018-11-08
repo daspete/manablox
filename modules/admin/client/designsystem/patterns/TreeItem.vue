@@ -8,16 +8,10 @@
                         <span v-if="!isOpen">+</span>
                     </Button>
                     <span v-else :style="`width: 5px; display: inline-block; height: 10px;`"></span>
-
                     {{ item.title }}
                 </div>
-                <div class="col-3 text-right">
-
-                </div>
+                <div class="col-3 text-right"></div>
             </div>
-
-
-
         </div>
         <TreeItem
             v-if="item.children && isOpen"
@@ -30,17 +24,29 @@
 </template>
 
 <script>
+/**
+ * The default item visualization of a collection tree
+ */
 export default {
     name: 'TreeItem',
 
     props: {
+        /**
+         * the item data
+         */
         item: {
             type: Object
         },
+        /**
+         * the current level in the tree
+         */
         level: {
             type: Number,
             default: 0
         },
+        /**
+         * the left padding per level
+         */
         indentation: {
             type: Number,
             default: 20
@@ -82,3 +88,9 @@ export default {
     }
 }
 </style>
+
+<docs>
+```
+<TreeItem :item="{ title: 'I am a tree item' }" />
+```
+</docs>

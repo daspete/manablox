@@ -94,9 +94,9 @@ export default {
 <docs>
 ```jsx
 <div>
-    <UILabel>I am a label</UILabel><br>
-    <UILabel big>I am a big label</UILabel><br>
-    <UILabel big color="orange">I am a big orange label</UILabel>
+    <Label>I am a label</Label><br>
+    <Label big>I am a big label</Label><br>
+    <Label big color="orange">I am a big orange label</Label>
 </div>
 ```
 </docs>

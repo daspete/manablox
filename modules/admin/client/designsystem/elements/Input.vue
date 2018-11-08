@@ -134,23 +134,23 @@ export default {
     <div>
         <div class="row">
             <div class="col-1">
-                <UILabel>Text</UILabel>
+                <Label>Text</Label>
             </div>
             <div class="col-11">
-                <UIInput v-model="inputValue" />
+                <Input v-model="inputValue" />
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-1">
-                <UILabel>Password</UILabel>
+                <Label>Password</Label>
             </div>
             <div class="col-11">
-                <UIInput type="password" v-model="passwordValue" />
+                <Input type="password" v-model="passwordValue" />
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
-                <SvgIcon name="search" color="gray" size="20px" /><UIInput transparent width="300px" placeholder="search" />
+                <SvgIcon name="search" color="gray" size="20px" /><Input transparent width="300px" placeholder="search" />
             </div>
         </div>
     </div>
