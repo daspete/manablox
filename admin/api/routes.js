@@ -15,7 +15,8 @@ moduleNames.forEach((moduleName) => {
         adminModules.push({
             name: currentModule.name,
             title: currentModule.admin.title ? currentModule.admin.title : currentModule.name,
-            icon: currentModule.admin.icon ? currentModule.admin.icon : 'page'
+            icon: currentModule.admin.icon ? currentModule.admin.icon : 'page',
+            endpoint: currentModule.admin.endpoint
         })
     }
 })

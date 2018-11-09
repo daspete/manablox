@@ -6,13 +6,13 @@ module.exports = {
     folder: 'pagecollections',
 
     api: {
-        endpoint: 'pagecollections'
+        endpoint: 'collections'
     },
 
     frontend: true,
 
     admin: {
-        endpoint: 'pagecollections',
+        endpoint: 'collections',
         title: 'Collections',
         icon: 'page'
     },

@@ -15,7 +15,7 @@
             <Button
                 v-for="adminmodule in settings.modules"
                 :key="`modulebutton--${ adminmodule.name }`"
-                :to="`/admin/${ adminmodule.name }`"
+                :to="`/${ endpoint }/${ adminmodule.endpoint }`"
                 color="white"
                 backgroundColor="darkred"
                 style="display: block;"
@@ -37,6 +37,7 @@ export default {
     middleware: 'loggedin',
 
     async asyncData({ app }){
+        console.log();
         let settings = null;
         try {
             settings = await app.$axios.$get('admin')
@@ -44,6 +45,7 @@ export default {
 
 
         return {
+            endpoint: process.env.ADMIN_ENDPOINT,
             settings
         }
     },

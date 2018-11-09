@@ -27,6 +27,7 @@ moduleNames.forEach((moduleName) => {
 
 if(process.env.ADMIN_ENABLED){
     let adminRoutes = require('../admin/client/routes.js').default
+    adminRoutes.path = '/' + process.env.ADMIN_ENDPOINT
     routes.push(adminRoutes);
 }
 

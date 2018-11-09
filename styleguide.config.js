@@ -19,9 +19,7 @@ moduleNames.forEach((moduleName) => {
     if(currentModule.designsystem){
         aliases[`~${ currentModule.name }`] = path.resolve(__dirname + '/modules/' + currentModule.folder + '/designsystem')
     }
-
 })
-
 
 module.exports = {
     styleguideDir: 'client/static/styleguide',

@@ -1,5 +1,3 @@
-import AdminIndex from '~admin/client/pages/index.vue'
-
 import ModuleLoader from '~approot/helpers/ModuleLoader'
 const moduleLoader = new ModuleLoader()
 let modules = moduleLoader.modules
@@ -22,14 +20,16 @@ context.keys().forEach((key) => {
     }
 
     if(currentModule && currentModule.admin){
-        adminRoutes.push(context(key).default)
+        let adminRoute = context(key).default;
+        adminRoute.path = currentModule.admin.endpoint;
+        adminRoutes.push(adminRoute)
     }
 })
 
 export default {
-    path: '/admin',
+    path: '/', // will be overwritten
     name: 'admin_index',
-    component: AdminIndex,
+    component: require('~admin/client/pages/index.vue').default,
     children: adminRoutes
 }
 

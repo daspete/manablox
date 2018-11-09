@@ -1,5 +1,4 @@
 export default {
-    path: 'users',
     name: 'admin_users_index',
     component: require('~users/admin/pages/index.vue').default,
     children: [

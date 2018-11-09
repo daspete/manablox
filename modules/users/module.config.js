@@ -9,8 +9,6 @@ module.exports = {
         endpoint: 'users'
     },
 
-    frontend: true,
-
     admin: {
         endpoint: 'users',
         title: 'Users',

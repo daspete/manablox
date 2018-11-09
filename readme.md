@@ -55,16 +55,18 @@ Each module has an endpoint for the
 
 - **api** (express api router)
 - **client** (nuxt pages and routes)
-- **client admin** (nuxt pages and routes for the admin module)
+- **client admin** (nuxt pages and routes for the admin)
 - **designsystem** (elements, patterns, templates and tokens for the vue-styleguidist package)
 - **sockets** (socket.io controller)
 - **mongodb** (DatabaseModels for mongodb)
 
-## Enable and disable modules
+Be sure, you have a ``` module.config.js ```file in every module folder
 
-To enable modules, you need an entry in the .env file
+## Enable and disable the admin
+
+If you need the admin, you can enable it in the .env file
 
 ```
-ENABLED_MODULES=users,auth,admin,demomodule
+ADMIN_ENABLED=true
 ```
 
