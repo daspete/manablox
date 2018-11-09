@@ -73,7 +73,6 @@ module.exports = {
             // add module path aliases
             config.resolve.alias[`~approot`] = path.join(this.options.srcDir, `../`)
 
-            console.log(process.env.ADMIN_ENABLED)
             // add admin alias when enabled
             if(process.env.ADMIN_ENABLED)
                 config.resolve.alias[`~admin`] = path.join(this.options.srcDir, `../admin/`)

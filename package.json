@@ -15,7 +15,7 @@
     "server:serve": "SERVER_ONLY=true node server/main.js",
 
     "system:dev": "backpack dev",
-    "system:build": "nuxt build; vue-styleguidist build; backpack build",
+    "system:build": "vue-styleguidist build; nuxt build; backpack build",
     "system:serve": "node server/main.js",
 
     "styleguide:dev": "vue-styleguidist server",

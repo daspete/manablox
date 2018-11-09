@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 
-const CollectionModel = require('@modules/collections/db/CollectionModel')
+const CollectionModel = require('@modules/pagecollections/db/CollectionModel')
 const AuthMiddleware = passport.authenticate('jwt', { session: false })
 
 router.get('/', async (req, res, next) => {

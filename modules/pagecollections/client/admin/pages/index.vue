@@ -26,7 +26,7 @@ export default {
         let collections = []
 
         try{
-            collections = await app.$axios.$get('collections')
+            collections = await app.$axios.$get('pagecollections')
         }catch(e){}
 
         return {
@@ -44,7 +44,7 @@ export default {
             let collectionIndex = 0;
 
             for(collectionIndex = 0; collectionIndex < collectionCount; collectionIndex++){
-                let collection = await this.$axios.$post('collections', {
+                let collection = await this.$axios.$post('pagecollections', {
                     title: faker.random.words(2),
                     slug: faker.random.word()
                 })
@@ -52,7 +52,7 @@ export default {
                 let randomNumber = Math.round(Math.random() * 5 + 2);
 
                 for(let i = 0; i < randomNumber; i++){
-                    let subcollection = await this.$axios.$post('collections', {
+                    let subcollection = await this.$axios.$post('pagecollections', {
                         parentId: collection._id,
                         title: faker.random.words(2),
                         slug: faker.random.word()
@@ -61,7 +61,7 @@ export default {
                     let anotherRandomNumber = Math.round(Math.random() * 5 + 2);
 
                     for(let j = 0; j < anotherRandomNumber; j++){
-                        let subsubcollection = await this.$axios.$post('collections', {
+                        let subsubcollection = await this.$axios.$post('pagecollections', {
                             parentId: subcollection._id,
                             title: faker.random.words(2),
                             slug: faker.random.word()
@@ -70,7 +70,7 @@ export default {
                 }
             }
 
-            let collections = await this.$axios.$get('collections');
+            let collections = await this.$axios.$get('pagecollections');
             this.collections = collections
         }
     }

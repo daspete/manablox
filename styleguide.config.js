@@ -3,11 +3,23 @@ require('dotenv').config();
 const path = require('path');
 const vueLoader = require('vue-loader');
 
-const modules = process.env.ENABLED_MODULES.split(',');
 const aliases = {}
+if(process.env.ADMIN_ENABLED){
+    aliases['~admin'] = path.resolve(__dirname + '/admin')
+}
 
-modules.forEach((moduleName) => {
-    aliases[`~${ moduleName }`] = path.resolve(__dirname + '/modules/' + moduleName + '/client')
+const ModuleLoader = require('./helpers/StyleguideModuleLoader')
+const moduleLoader = new ModuleLoader()
+const modules = moduleLoader.modules
+const moduleNames = Object.keys(modules)
+
+moduleNames.forEach((moduleName) => {
+    let currentModule = modules[moduleName]
+
+    if(currentModule.designsystem){
+        aliases[`~${ currentModule.name }`] = path.resolve(__dirname + '/modules/' + currentModule.folder + '/designsystem')
+    }
+
 })
 
 
@@ -16,7 +28,10 @@ module.exports = {
 
     title: 'manablox DesignSystem',
 
-    components: 'modules/*/client/designsystem/**/[A-Z]*.vue',
+    components: [
+        'modules/*/client/designsystem/**/[A-Z]*.vue',
+        'admin/designsystem/**/[A-Z]*.vue'
+    ],
 
     version: '1.0.0',
 
