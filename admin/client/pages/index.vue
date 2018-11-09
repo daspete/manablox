@@ -37,12 +37,10 @@ export default {
     middleware: 'loggedin',
 
     async asyncData({ app }){
-        console.log();
         let settings = null;
         try {
             settings = await app.$axios.$get('admin')
         }catch(e){}
-
 
         return {
             endpoint: process.env.ADMIN_ENDPOINT,
