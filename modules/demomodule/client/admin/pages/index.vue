@@ -1,6 +1,12 @@
 <template>
     <div class="demo">
+        <DemoElement />
         Welcome to your demo admin module
+        <br>
+        <br>
+        API Response:
+        <br>
+        {{ democontent }}
     </div>
 </template>
 
@@ -12,7 +18,7 @@ export default {
         let democontent = null
 
         try{
-            democontent = await app.$axios.$get('demomodule')
+            democontent = await app.$axios.$get('demo')
         }catch(e){}
 
         return {

@@ -16,7 +16,7 @@ let ModuleLoader = null
 if(process.env.npm_lifecycle_script.indexOf('nuxt') !== -1){
     ModuleLoader = require('./helpers/NuxtModuleLoader.js')
 }else{
-    ModuleLoader = require('./helpers/ModuleLoader.js')
+    ModuleLoader = require('./helpers/ModuleLoader.js').default
 }
 
 
@@ -29,10 +29,10 @@ moduleNames.forEach((moduleName) => {
 
     if(currentModule.designsystem){
         try{
-            if(fs.existsSync(`./modules/${ moduleName }/designsystem/DesignSystem.js`)){
-                plugins.push(`~approot/modules/${ moduleName }/designsystem/DesignSystem`)
+            if(fs.existsSync(`./modules/${ currentModule.folder }/client/designsystem/DesignSystem.js`)){
+                plugins.push(`~/../modules/${ currentModule.folder }/client/designsystem/DesignSystem`)
             }
-        }catch(e){}
+        }catch(e){console.log(e)}
     }
 
 })

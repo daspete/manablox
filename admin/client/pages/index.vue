@@ -11,45 +11,40 @@
                 </div>
             </div>
         </div>
-        <div class="admin__modules">
+        <div class="admin__modules" v-if="settings != null">
             <Button
-                v-for="moduleName in modules"
-                :key="`modulebutton--${ moduleName }`"
-                :to="`${ moduleName }`"
+                v-for="adminmodule in settings.modules"
+                :key="`modulebutton--${ adminmodule.name }`"
+                :to="`/admin/${ adminmodule.name }`"
                 color="white"
                 backgroundColor="darkred"
                 style="display: block;"
                 mini
             >
-                <SvgIcon name="contentbuilder" color="white" /> {{ moduleName }}
+                <SvgIcon :name="adminmodule.icon" color="white" /> {{ adminmodule.title }}
             </Button>
         </div>
         <div class="admin__container">
             <nuxt-child />
         </div>
-
     </div>
 </template>
-
-
-
-
 
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined
 
 export default {
-
     middleware: 'loggedin',
 
-    asyncData(){
-        let modules = process.env.ENABLED_MODULES.split(',')
-        modules = modules.filter((moduleName) => {
-            return moduleName != 'admin' && moduleName != 'auth'
-        })
+    async asyncData({ app }){
+        let settings = null;
+        try {
+            settings = await app.$axios.$get('admin')
+        }catch(e){}
+
 
         return {
-            modules
+            settings
         }
     },
 
@@ -59,16 +54,9 @@ export default {
             this.$store.commit('setAuth', null)
             this.$router.push('/login')
         }
-
     }
-
 }
 </script>
-
-
-
-
-
 
 <style lang="scss">
 @import "~admin/designsystem/tokens/colors.scss";
@@ -119,6 +107,3 @@ export default {
 
 }
 </style>
-
-
-

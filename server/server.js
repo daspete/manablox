@@ -64,7 +64,7 @@ app.use(bodyParser.json())
 app.use(cookieParser());
 
 require('@server/auth')
-app.use('/api', require('@server/api'))
+app.use('/api', require('@server/api').default)
 
 // nuxt.js middleware
 if(!serverOnly){

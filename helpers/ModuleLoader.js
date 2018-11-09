@@ -1,4 +1,5 @@
-module.exports = class {
+
+class ModuleLoader {
 
     constructor(){
         this.modules = {}
@@ -15,3 +16,6 @@ module.exports = class {
     }
 
 }
+
+export default ModuleLoader
+// module.exports = ModuleLoader

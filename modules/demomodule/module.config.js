@@ -1,8 +1,9 @@
 module.exports = {
-    name: 'demo', // used as project alias, like : ~demo/
-    folder: 'demomodule', // the folder name of the module
+    enabled: true,
 
-    enabled: true, // toggle module status
+    name: 'demo',
+
+    folder: 'demomodule',
 
     api: {
         endpoint: 'demo'
@@ -18,5 +19,5 @@ module.exports = {
 
     socket: true,
 
-    designsystem: false
+    designsystem: true
 }

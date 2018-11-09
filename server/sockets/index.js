@@ -1,4 +1,5 @@
-const ModuleLoader = require('~approot/helpers/ModuleLoader.js')
+// const ModuleLoader = require('~approot/helpers/ModuleLoader.js')
+import ModuleLoader from '~approot/helpers/ModuleLoader'
 const moduleLoader = new ModuleLoader()
 let modules = moduleLoader.modules
 let moduleNames = Object.keys(modules)

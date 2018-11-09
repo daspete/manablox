@@ -1,6 +1,6 @@
 import AdminIndex from '~admin/client/pages/index.vue'
 
-const ModuleLoader = require('~approot/helpers/ModuleLoader.js')
+import ModuleLoader from '~approot/helpers/ModuleLoader'
 const moduleLoader = new ModuleLoader()
 let modules = moduleLoader.modules
 let moduleNames = Object.keys(modules)
@@ -21,7 +21,7 @@ context.keys().forEach((key) => {
         }
     }
 
-    if(currentModule){
+    if(currentModule && currentModule.admin){
         adminRoutes.push(context(key).default)
     }
 })
