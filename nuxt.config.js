@@ -7,14 +7,34 @@ const plugins = [
     '~/plugins/events',
 ]
 
-const modules = process.env.ENABLED_MODULES.split(',')
+if(process.env.ADMIN_ENABLED){
+    plugins.push('~/../admin/designsystem/DesignSystem')
+}
 
-modules.forEach((moduleName) => {
-    try{
-        if(fs.existsSync(`./modules/${ moduleName }/client/plugins/DesignSystem.js`)){
-            plugins.push(`~/../modules/${ moduleName }/client/plugins/DesignSystem`)
-        }
-    }catch(e){}
+let ModuleLoader = null
+
+if(process.env.npm_lifecycle_script.indexOf('nuxt') !== -1){
+    ModuleLoader = require('./helpers/NuxtModuleLoader.js')
+}else{
+    ModuleLoader = require('./helpers/ModuleLoader.js')
+}
+
+
+const moduleLoader = new ModuleLoader(true)
+let modules = moduleLoader.modules
+let moduleNames = Object.keys(modules)
+
+moduleNames.forEach((moduleName) => {
+    let currentModule = modules[moduleName]
+
+    if(currentModule.designsystem){
+        try{
+            if(fs.existsSync(`./modules/${ moduleName }/designsystem/DesignSystem.js`)){
+                plugins.push(`~approot/modules/${ moduleName }/designsystem/DesignSystem`)
+            }
+        }catch(e){}
+    }
+
 })
 
 module.exports = {
@@ -45,24 +65,27 @@ module.exports = {
 
         extend(config){
 
-
-            const imageLoader = config.module.rules.find((loader) => {
-                return loader.test.toString() == /\.(png|jpe?g|gif|svg|webp)$/.toString()
-            })
+            // force loading svgs with html-loader
+            const imageLoader = config.module.rules.find((loader) => { return loader.test.toString() == /\.(png|jpe?g|gif|svg|webp)$/.toString() })
             imageLoader.test = /\.(png|jpe?g|gif|webp)$/
+            config.module.rules.push({ test: /\.svg$/, loader: 'html-loader' });
 
-            config.module.rules.push({
-                test: /\.svg$/,
-                loader: 'html-loader',
-            });
+            // add module path aliases
+            config.resolve.alias[`~approot`] = path.join(this.options.srcDir, `../`)
 
+            console.log(process.env.ADMIN_ENABLED)
+            // add admin alias when enabled
+            if(process.env.ADMIN_ENABLED)
+                config.resolve.alias[`~admin`] = path.join(this.options.srcDir, `../admin/`)
 
-            modules.forEach((moduleName) => {
+            moduleNames.forEach((moduleName) => {
+                let currentModule = modules[moduleName]
+
                 try {
-                    config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ moduleName }/client`)
+                    config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ currentModule.folder }/client`)
                 }catch(e){}
-            })
 
+            })
 
         }
     }

@@ -4,7 +4,7 @@
 
 <script>
 import designtokens from "~admin/designsystem/tokens/tokens.scss";
-const req = require.context("~admin/assets/icons/", true, /^\.\/.*\.svg$/)
+const req = require.context("~admin/client/assets/icons/", true, /^\.\/.*\.svg$/)
 
 /**
  * Icons are used to visually communicate core parts of the product and

@@ -3,19 +3,31 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const modules = process.env.ENABLED_MODULES.split(',')
+const ModuleLoader = require('~approot/helpers/ModuleLoader.js')
+const moduleLoader = new ModuleLoader()
+let modules = moduleLoader.modules
+let moduleNames = Object.keys(modules)
+
 const routes = []
 
-modules.forEach((moduleName) => {
-    try {
-        let moduleRoutes = require('../modules/' + moduleName + '/client/routes.js').default;
+moduleNames.forEach((moduleName) => {
+    let currentModule = modules[moduleName]
 
-        moduleRoutes.forEach((moduleRoute) => {
-            routes.push(moduleRoute);
-        })
+    if(currentModule.frontend == true){
+        try {
+            let moduleRoutes = require('../modules/' + currentModule.folder + '/client/frontend/routes.js').default;
 
-    }catch(e){}
+            moduleRoutes.forEach((moduleRoute) => {
+                routes.push(moduleRoute);
+            })
+        }catch(e){console.log(e)}
+    }
 })
+
+if(process.env.ADMIN_ENABLED){
+    let adminRoutes = require('../admin/client/routes.js').default
+    routes.push(adminRoutes);
+}
 
 export function createRouter(){
     return new Router({

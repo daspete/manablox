@@ -7,7 +7,6 @@ const serverOnly = process.env.SERVER_ONLY == "true"
 const isProduction = process.env.NODE_ENV === 'production'
 
 // import server modules
-const Sockets = require('@server/sockets').default
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const express = require('express')
@@ -86,4 +85,5 @@ server.listen(port, host)
 console.log(`express server is running at ${ host }:${ port } `)
 
 // start socket server
+const Sockets = require('@server/sockets').default
 const sockets = new Sockets(io)

@@ -6,11 +6,9 @@ module.exports = {
 
         config.entry.main = [ './server/server.js' ]
 
-        config.module.rules[0].exclude.push(path.join(path.resolve(process.cwd()), 'client'))
-        config.module.rules[0].exclude.push(path.join(path.resolve(process.cwd()), 'modules/admin/client'))
-
         config.resolve = {
             alias: {
+                '~approot': path.resolve(__dirname), // main alias for client and server
                 '@app': path.resolve(__dirname),
                 '@server': path.resolve(__dirname + '/server'),
                 '@client': path.resolve(__dirname + '/client'),

@@ -1,13 +1,20 @@
+const ModuleLoader = require('~approot/helpers/ModuleLoader.js')
+const moduleLoader = new ModuleLoader()
+let modules = moduleLoader.modules
+let moduleNames = Object.keys(modules)
 
-const modules = process.env.ENABLED_MODULES.split(',')
 const socketControllers = []
 
 
-modules.forEach((moduleName) => {
-    try {
-        let socketController = require('@modules/' + moduleName + '/sockets/controller.js').default
-        socketControllers.push(socketController)
-    }catch(e){}
+moduleNames.forEach((moduleName) => {
+    let currentModule = modules[moduleName]
+
+    if(currentModule.socket && currentModule.socket.controller){
+        try {
+            let socketController = require(`@modules/${ currentModule.folder }/sockets/controller.js`)
+            socketControllers.push(socketController)
+        }catch(e){console.log(e)}
+    }
 })
 
 class Sockets {

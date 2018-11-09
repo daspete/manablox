@@ -18,7 +18,6 @@
     "system:build": "nuxt build; vue-styleguidist build; backpack build",
     "system:serve": "node server/main.js",
 
-
     "styleguide:dev": "vue-styleguidist server",
     "styleguide:build": "vue-styleguidist build"
   },

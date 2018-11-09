@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
+const ModuleLoader = require('~approot/helpers/ModuleLoader.js')
+const moduleLoader = new ModuleLoader()
+let modules = moduleLoader.modules
+let moduleNames = Object.keys(modules)
 
-const modules = process.env.ENABLED_MODULES.split(',')
+moduleNames.forEach((moduleName) => {
+    let currentModule = modules[moduleName]
 
-modules.forEach((moduleName) => {
-    try {
-        router.use(`/${ moduleName }`, require('@modules/' + moduleName + '/api/routes.js'))
-    }catch(e){}
+    if(currentModule.api && currentModule.api.endpoint){
+        try {
+            router.use('/' + currentModule.api.endpoint, require(`@modules/${ currentModule.folder }/api/routes.js`))
+        }catch(e){}
+    }
+
 })
 
 
