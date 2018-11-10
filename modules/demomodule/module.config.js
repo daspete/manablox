@@ -1,5 +1,5 @@
-module.exports = {
-    enabled: true,
+export default {
+    enabled: false,
 
     name: 'demo',
 
@@ -11,11 +11,11 @@ module.exports = {
 
     frontend: true,
 
-    admin: {
-        endpoint: 'demo',
-        title: 'Demo Module',
-        icon: 'page'
-    },
+    // admin: {
+    //     endpoint: 'demo',
+    //     title: 'Demo Module',
+    //     icon: 'page'
+    // },
 
     socket: true,
 

@@ -1,5 +1,5 @@
-module.exports = {
-    enabled: true,
+export default {
+    enabled: false,
 
     name: 'pagecollections',
 

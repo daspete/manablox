@@ -51,7 +51,7 @@ export default {
                 Cookie.set('auth', {
                     accessToken: token
                 })
-                this.$router.push('/admin')
+                this.$router.push('/' + process.env.ADMIN_ENDPOINT)
             }catch(err){
                 this.error = err.response.data;
             }

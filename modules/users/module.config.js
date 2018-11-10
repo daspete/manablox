@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     enabled: true,
 
     name: 'users',
@@ -9,9 +9,9 @@ module.exports = {
         endpoint: 'users'
     },
 
-    admin: {
-        endpoint: 'users',
-        title: 'Users',
-        icon: 'settings'
-    }
+    // admin: {
+    //     endpoint: 'users',
+    //     title: 'Users',
+    //     icon: 'settings'
+    // }
 }

@@ -21,8 +21,12 @@ if(process.env.npm_lifecycle_script.indexOf('nuxt') !== -1){
 
 
 const moduleLoader = new ModuleLoader(true)
+
 let modules = moduleLoader.modules
 let moduleNames = Object.keys(modules)
+
+let disabledModules = moduleLoader.disabledModules
+let disabledModuleNames = Object.keys(disabledModules)
 
 moduleNames.forEach((moduleName) => {
     let currentModule = modules[moduleName]
@@ -39,7 +43,10 @@ moduleNames.forEach((moduleName) => {
 
 module.exports = {
 
-    env: process.env,
+    env: {
+        ADMIN_ENABLED: process.env.ADMIN_ENABLED,
+        ADMIN_ENDPOINT: process.env.ADMIN_ENDPOINT
+    },
 
     srcDir: './client',
 
@@ -74,16 +81,24 @@ module.exports = {
             config.resolve.alias[`~approot`] = path.join(this.options.srcDir, `../`)
 
             // add admin alias when enabled
-            if(process.env.ADMIN_ENABLED)
+            if(process.env.ADMIN_ENABLED){
                 config.resolve.alias[`~admin`] = path.join(this.options.srcDir, `../admin/`)
+            }
 
+            // add enabled module aliases
             moduleNames.forEach((moduleName) => {
                 let currentModule = modules[moduleName]
-
                 try {
                     config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ currentModule.folder }/client`)
                 }catch(e){}
+            })
 
+            // keep track of all modules to prevent errors
+            disabledModuleNames.forEach((moduleName) => {
+                let currentModule = disabledModules[moduleName]
+                try {
+                    config.resolve.alias[`~${ moduleName }`] = path.join(this.options.srcDir, `../modules/${ currentModule.folder }/client`)
+                }catch(e){}
             })
 
         }

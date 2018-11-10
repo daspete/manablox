@@ -19,7 +19,7 @@ context.keys().forEach((key) => {
         }
     }
 
-    if(currentModule && currentModule.admin){
+    if(currentModule && currentModule.enabled == true && currentModule.admin){
         let adminRoute = context(key).default;
         adminRoute.path = currentModule.admin.endpoint;
         adminRoutes.push(adminRoute)
@@ -27,7 +27,6 @@ context.keys().forEach((key) => {
 })
 
 export default {
-    path: '/', // will be overwritten
     name: 'admin_index',
     component: require('~admin/client/pages/index.vue').default,
     children: adminRoutes

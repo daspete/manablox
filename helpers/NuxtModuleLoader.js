@@ -5,6 +5,7 @@ module.exports = class {
 
     constructor(){
         this.modules = {}
+        this.disabledModules = {}
 
         const modulesFolder = path.resolve(__dirname + '/../modules/')
         const moduleFolders = fs.readdirSync(modulesFolder)
@@ -14,8 +15,12 @@ module.exports = class {
             let moduleHasConfig = fs.existsSync(moduleConfigFile)
 
             if(moduleHasConfig){
-                let moduleConfig = require(modulesFolder + '/' + moduleFolder + '/module.config.js');
-                this.modules[moduleConfig.name] = moduleConfig
+                let moduleConfig = require(modulesFolder + '/' + moduleFolder + '/module.config.js').default;
+                if(moduleConfig.enabled == true){
+                    this.modules[moduleConfig.name] = moduleConfig
+                }else{
+                    this.disabledModules[moduleConfig.name] = moduleConfig
+                }
             }
         })
 

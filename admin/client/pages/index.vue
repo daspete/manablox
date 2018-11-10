@@ -39,8 +39,8 @@ export default {
     async asyncData({ app }){
         let settings = null;
         try {
-            settings = await app.$axios.$get('admin')
-        }catch(e){}
+            settings = await app.$axios.$get(process.env.ADMIN_ENDPOINT)
+        }catch(e){console.log(e)}
 
         return {
             endpoint: process.env.ADMIN_ENDPOINT,
