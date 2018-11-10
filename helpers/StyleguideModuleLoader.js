@@ -15,7 +15,12 @@ module.exports = class {
             let moduleHasConfig = fs.existsSync(moduleConfigFile)
 
             if(moduleHasConfig){
-                let moduleConfig = require(modulesFolder + '/' + moduleFolder + '/module.config.js').default;
+                let config = fs.readFileSync('./modules/' + moduleFolder + '/module.config.js').toString()
+                // dont try this at home.... this will be fixed
+                eval('config = ' + config.replace('export default ', ''))
+
+                let moduleConfig = config;
+                // let moduleConfig = require(modulesFolder + '/' + moduleFolder + '/module.config.js').default;
                 if(moduleConfig.enabled == true){
                     this.modules[moduleConfig.name] = moduleConfig
                 }else{
