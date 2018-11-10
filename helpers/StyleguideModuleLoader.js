@@ -20,7 +20,6 @@ module.exports = class {
                 eval('config = ' + config.replace('export default ', ''))
 
                 let moduleConfig = config;
-                // let moduleConfig = require(modulesFolder + '/' + moduleFolder + '/module.config.js').default;
                 if(moduleConfig.enabled == true){
                     this.modules[moduleConfig.name] = moduleConfig
                 }else{
